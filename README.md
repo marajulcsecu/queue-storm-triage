@@ -328,27 +328,28 @@ For full architectural rationale, see [`ARCHITECTURE.md`](./ARCHITECTURE.md). Ke
 
 ---
 
-## License
+## Deployment Status
 
-This is a mock-project submission. No license specified.
+**Live and serving traffic.**
 
----
+| Component       | Status / Value                                       |
+|-----------------|------------------------------------------------------|
+| Repository      | https://github.com/marajulcsecu/queue-storm-triage   |
+| Live API base   | https://queue-storm-triage.onrender.com              |
+| Platform        | Render (Docker, free tier)                           |
+| Image size      | 159 MB                                               |
+| Cold start      | ~5 s (Render free tier spins down after ~15 min idle)|
+| Health probe    | `GET /health` → 200 OK every 5 s                     |
+| Latest deploy   | Verified against all 5 brief samples — see logs      |
 
-## Submission
+### Known behaviors (not bugs)
 
-For the QueueStorm Warmup submission, the following information is needed:
-
-| Field                | Value                                              |
-|----------------------|----------------------------------------------------|
-| Team name            | _(your team name)_                                 |
-| GitHub repository    | https://github.com/marajulcsecu/queue-storm-triage |
-| Live API base URL    | https://queue-storm-triage.onrender.com            |
-| Deployment platform  | Render (Docker)                                    |
-| LLM used             | No (rule-based classification)                     |
-| Known issues         | None                                               |
+- **First request after idle may take ~5–10 s.** Render's free tier suspends the container after 15 minutes of no traffic. The first request wakes it up. Subsequent requests are sub-millisecond.
+- **`GET /` returns `404 Not Found`.** This is the correct HTTP response — only `/health` and `/sort-ticket` are defined per the brief. Visit `/docs` for the interactive API explorer.
+- **`/health` requests appear in logs every ~5 s.** Render's platform-level health probe generates these. They are 200 OK and consume negligible resources.
 
 ---
 
 ## Contact
 
-Built by **MD. MARAJUL HAQUE** (marajul.cu@gmail.com) for the QueueStorm warmup task.
+Built by **MD. MARAJUL HAQUE** (marajul.cu@gmail.com).
