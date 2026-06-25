@@ -1,0 +1,21 @@
+# Production dependencies for the QueueStorm Triage Service.
+#
+# These are the packages required to RUN the service.
+# Test/lint tooling lives in requirements-dev.txt.
+#
+# Install with:
+#     pip install -r requirements.txt
+#
+# Why pinned? Pinned versions guarantee reproducible builds across
+# local, CI, staging, and production. Update intentionally via
+# `pip install --upgrade <pkg>` followed by re-pinning.
+
+# Web framework + ASGI server
+fastapi==0.138.1
+uvicorn[standard]==0.49.0
+
+# Data validation (used by FastAPI for request/response models)
+pydantic==2.13.4
+
+# Structured logging
+structlog==26.1.0

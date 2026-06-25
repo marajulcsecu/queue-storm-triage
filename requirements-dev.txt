@@ -1,0 +1,13 @@
+# Development and testing dependencies.
+#
+# NOT installed in production. Use:
+#     pip install -r requirements-dev.txt
+#
+# This file assumes requirements.txt has already been installed
+# (it is not auto-included; install both).
+
+# Test runner
+pytest==9.1.1
+
+# Async HTTP client used by FastAPI TestClient
+httpx==0.28.1

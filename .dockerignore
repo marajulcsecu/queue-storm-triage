@@ -1,0 +1,52 @@
+# Files and directories excluded from the Docker build context.
+# Reducing context size = faster builds, smaller layer cache, no risk of
+# leaking secrets into the image.
+
+# Version control
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Tests (we run tests in CI, not in the production image)
+tests/
+
+# Secrets and local config
+.env
+.env.*
+*.pem
+*.key
+
+# Docker artifacts (avoid recursion)
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Docs we don't need in the container
+*.md
+!README.md
+docs/
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/

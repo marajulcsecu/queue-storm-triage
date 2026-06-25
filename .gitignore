@@ -1,0 +1,57 @@
+# ----- Python -----
+# Bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# mypy / linters
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# ----- Environment & secrets -----
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ----- Internal workflow docs (kept locally, NOT submitted) -----
+# These are planning/context docs for the AI agent and the dev team.
+# They are not part of the deliverable; the brief + code + README are.
+ROADMAP.md
+AGENT.md
+
+# ----- IDE -----
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# ----- Docker -----
+docker-compose.override.yml
+
+# ----- Logs -----
+*.log
+logs/
